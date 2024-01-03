@@ -11,7 +11,7 @@ int check_cycle(listint_t *list)
 	listint_t *helper;
 	int first = 1;
 
-	while (list && list->next)
+	while (list != NULL && list->next != NULL)
 	{
 		if (first == 1)
 		{
