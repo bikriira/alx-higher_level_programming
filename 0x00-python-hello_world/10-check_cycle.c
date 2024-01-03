@@ -8,17 +8,17 @@
  */
 int check_cycle(listint_t *list)
 {
-    listint_t *helper = list, *hare = list;
+	listint_t *helper = list, *hare = list;
 
-    while (hare != NULL && hare->next != NULL)
-    {
-        helper = helper->next;     // Move one step
-        hare = hare->next->next;   // Move two steps
+	while (hare != NULL && hare->next != NULL)
+	{
+		helper = helper->next;
+		hare = hare->next->next;
 
-        if (helper == hare)
-            return (1);  // Cycle detected
-    }
+		if (helper == hare)
+		return (1);
+	}
 
-    return (0);  // No cycle detected
+	return (0);
 }
 
