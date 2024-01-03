@@ -8,17 +8,21 @@
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *helper = list, *hare = list;
+	listint_t *helper;
+	int first = 1;
 
-	while (hare != NULL && hare->next != NULL)
+	while (list && list->next)
 	{
-		helper = helper->next;
-		hare = hare->next->next;
-
-		if (helper == hare)
-		return (1);
+		if (first == 1)
+		{
+			helper = list;
+			first++;
+		}
+		if (list->next == helper)
+		{
+			return (1);
+		}
+		list = list->next;
 	}
-
 	return (0);
 }
-
