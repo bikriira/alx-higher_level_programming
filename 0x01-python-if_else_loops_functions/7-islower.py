@@ -1,4 +1,4 @@
-#!/usr/bin/pyhton3
+#!/usr/bin/pyhthon3
 def islower(c):
     if ord(c) in range(97, 123):
         return True
