@@ -6,3 +6,5 @@ for num in range(1, 101):
         print("Buzz", end=" ")
     elif (num % 3 == 0) and (num % 5 == 0):
         print("FizzBuzz", end=" ")
+    else:
+        print("{}".format(num), end=" ")
