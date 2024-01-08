@@ -6,6 +6,5 @@ def replace_in_list(my_list, idx, element):
         return my_list
     for i, value in enumerate(my_list):
         if i == idx:
-            del my_list[idx]
-            my_list.insert(idx, element)
+            my_list[idx] = element
             return my_list
