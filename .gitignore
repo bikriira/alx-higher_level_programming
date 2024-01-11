@@ -1,0 +1,14 @@
+10-linked_lists.c
+add_0.py
+0-import_add.py
+calculator_1.py
+variable_load_5.py
+
+*main.c
+vgcore*
+
+*main.py
+__pycache__
+*.pyc
+
+.*.swp
