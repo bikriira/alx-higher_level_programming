@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 def weight_average(my_list=[]):
+    if not my_list:
+        return 0
     uper_statement = 0
     base_statement = 0
     for left, right in my_list:
