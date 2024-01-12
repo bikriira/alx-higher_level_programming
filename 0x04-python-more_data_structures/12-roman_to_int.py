@@ -14,7 +14,6 @@ def roman_to_int(roman_string):
         return my_dict.get(roman_string[0], "Unkown num_char")
 
     for i in range(len(roman_string)):
-        print("working on ", roman_string[i])
         num = my_dict.get(roman_string[i], "Unkown num_char")
         if i < len(roman_string) - 1:
             num_next = my_dict.get(roman_string[i + 1], "Unkown num_char")
