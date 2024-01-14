@@ -2,80 +2,87 @@
 #include <stdio.h>
 
 
+/**
+ * is_palindrome - Checks if a singly linked list is a palindrome
+ * @head: The head of the singly linked list
+ *
+ * Return: 0 if it is not a palindrome, 1 if it is a palindrome
+ */
 int is_palindrome(listint_t **head)
 {
-	listint_t *curr, *slow, *fast, *prev, *second_head;
-	int checked = 1;
+	listint_t *curr, *slow, *fast, *second_head;
+	int first_round = 1, round_count = 0;
 
-	curr = *head;
-	slow = *head;
-	fast = *head;
+	curr = *head, slow = *head, fast = *head;
 	if (*head == NULL)
 		return (1);
-
-	prev = NULL;
 	while (curr != NULL)
 	{
 		if (fast->next == NULL)
 		{
-			printf("Middle %d\n", slow->n);
-			make_new_list(&slow, &fast, &prev, &checked);
-			printf("Done reversing\n");
+			divide_list(&slow, &fast, &round_count);
 			break;
 		}
-		else if (fast->next->next == NULL)
+		else if (first_round == 0)
 		{
-			make_new_list(&slow, &fast, &prev, &checked);
-			break;
+			if (fast->next->next == NULL)
+			{
+				divide_list(&slow, &fast, &round_count);
+				break;
+			}
 		}
 		else
 		{
-			printf("Not yet slow at middle, slow: %d\n", slow->n);
 			slow = slow->next;
 			fast = fast->next->next;
+			first_round = 0;
 		}
+		round_count++;
 		curr = curr->next;
 	}
 	second_head = slow;
-	if (slow == NULL)
-		printf("HHHHH\n");
-	printf("The value at second head is %d\n", slow->n);
-	printf("Asign second_harf to slow, new list head\n");
-
 	curr = *head;
 	while (curr != NULL)
 	{
-		printf("Start checking elem curr: %d, 2curr: %d\n", curr->n, second_head->n);
 		if (curr->n != second_head->n)
 			return (0);
-		printf("Cheking elem\n");
 		curr = curr->next;
 		second_head = second_head->next;
 	}
-	printf("\nend...\n");
-
 	return (1);
 }
 
-void make_new_list(listint_t **slow, listint_t **fast, listint_t **prev, int *checked)
+
+/**
+ * divide_list - This chunks the list into two evenly lists
+ * @slow: The address of the slow node
+ * @fast: the address of the fast node
+ * @round: Times the original list was iterated
+ * To know if the list was iterated only once so that the condition in this
+ * function won't be executed(Helps alot if the list contains only 3 nodes
+ *
+ * Return: Void
+ */
+void divide_list(listint_t **slow, listint_t **fast, int *round)
 {
+	int checked = 0;
+	listint_t *prev = NULL;
+
 	while (*slow != NULL)
 	{
 		listint_t *next = (*slow)->next;
-    	(*slow)->next = *prev;
-    	*prev = *slow;
-    	*slow = next;
-    	printf("Slow is %d\n", (*prev)->n);
+		(*slow)->next = prev;
+		prev = *slow;
+		*slow = next;
 
-		if ((*fast)->next != NULL && *checked == 1)
+		if ((*fast)->next != NULL && checked == 0 && *round > 1)
 		{
 			if ((*fast)->next->next == NULL)
 			{
-				*prev = NULL;
-				*checked = 0;
-				printf("The list is even making its last-second part point to null\n");
+				prev = NULL;
+				checked = 1;
 			}
 		}
 	}
-	*slow = *prev;
+	*slow = prev;
 }
