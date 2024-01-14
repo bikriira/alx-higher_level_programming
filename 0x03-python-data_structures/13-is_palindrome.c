@@ -1,41 +1,81 @@
 #include "lists.h"
-/**
- * palindrome - check if is palindrome with recursion
- * @l: l
- * @r: r
- *
- * Return: 1 palindrome, 0 not palindrome
- */
-int palindrome(listint_t **l, listint_t *r)
+#include <stdio.h>
+
+
+int is_palindrome(listint_t **head)
 {
-	int response;
+	listint_t *curr, *slow, *fast, *prev, *second_head;
+	int checked = 1;
 
-	if (r != NULL)
+	curr = *head;
+	slow = *head;
+	fast = *head;
+	if (*head == NULL)
+		return (1);
+
+	prev = NULL;
+	while (curr != NULL)
 	{
-		response = palindrome(l, r->next);
-		if (response != 0)
+		if (fast->next == NULL)
 		{
-			response = (r->n == (*l)->n);
-			*l = (*l)->next;
-			return (response);
+			printf("Middle %d\n", slow->n);
+			make_new_list(&slow, &fast, &prev, &checked);
+			printf("Done reversing\n");
+			break;
 		}
-		return (0);
-
+		else if (fast->next->next == NULL)
+		{
+			make_new_list(&slow, &fast, &prev, &checked);
+			break;
+		}
+		else
+		{
+			printf("Not yet slow at middle, slow: %d\n", slow->n);
+			slow = slow->next;
+			fast = fast->next->next;
+		}
+		curr = curr->next;
 	}
+	second_head = slow;
+	if (slow == NULL)
+		printf("HHHHH\n");
+	printf("The value at second head is %d\n", slow->n);
+	printf("Asign second_harf to slow, new list head\n");
+
+	curr = *head;
+	while (curr != NULL)
+	{
+		printf("Start checking elem curr: %d, 2curr: %d\n", curr->n, second_head->n);
+		if (curr->n != second_head->n)
+			return (0);
+		printf("Cheking elem\n");
+		curr = curr->next;
+		second_head = second_head->next;
+	}
+	printf("\nend...\n");
+
 	return (1);
 }
 
-/**
- * is_palindrome - checks if a singly linked list is a palindrome.
- * @head: head of linked list
- *
- * Return: 1 palindrome, 0 not palindrome
- */
-int is_palindrome(listint_t **head)
+void make_new_list(listint_t **slow, listint_t **fast, listint_t **prev, int *checked)
 {
-	if (head == NULL)
+	while (*slow != NULL)
 	{
-		return (0);
+		listint_t *next = (*slow)->next;
+    	(*slow)->next = *prev;
+    	*prev = *slow;
+    	*slow = next;
+    	printf("Slow is %d\n", (*prev)->n);
+
+		if ((*fast)->next != NULL && *checked == 1)
+		{
+			if ((*fast)->next->next == NULL)
+			{
+				*prev = NULL;
+				*checked = 0;
+				printf("The list is even making its last-second part point to null\n");
+			}
+		}
 	}
-	return (palindrome(head, *head));
+	*slow = *prev;
 }

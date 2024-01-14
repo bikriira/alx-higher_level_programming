@@ -21,4 +21,6 @@ void free_listint(listint_t *head);
 
 int is_palindrome(listint_t **head);
 
+void make_new_list(listint_t **slow, listint_t **fast, listint_t **prev, int *checked);
+
 #endif /* LISTS_H */
