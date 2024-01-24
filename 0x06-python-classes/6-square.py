@@ -6,13 +6,20 @@
 
 
 class Square:
-    """
-        Defines a square by: (based on 1-square.py)
+    """Class defined for square generation.
 
-        Attributes:
-            size (int): size of the square
-            position=(0, 0): __position (tuple) ((int), (int)): horizontal and
-            horizontal offsets in spaces(x, y)
+    Args:
+        size (int): length of one side of square
+        position (tuple) ((int), (int)): horizontal offset in spaces,
+        vertical offset in newlines
+
+
+    Attributes:
+        __size (int): length of one side of square
+        __position (tuple) ((int), (int)): horizontal offset in spaces,
+        vertical offset in newlines
+
+
     """
     def __init__(self, size=0, position=(0, 0)):
         """
