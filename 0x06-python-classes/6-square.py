@@ -9,8 +9,8 @@ class Square:
         """Initialize a square.
 
         Args:
-            size (int, optional): Length of one side of the square. Defaults to 0.
-            position (tuple, optional): Horizontal and vertical offset of the square.
+            size (int, optional): Side of the square. Defaults to 0.
+            position (tuple, optional): Horizontal and vertical offset.
                 Defaults to (0, 0).
         """
         self.size = size
@@ -94,4 +94,3 @@ class Square:
                 for col in range(0, self.__size):
                     print("#", end="")
                 print()
-
