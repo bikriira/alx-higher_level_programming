@@ -108,3 +108,4 @@ class Square:
                 print("#", end="", sep="")
             print()
         if self.__size <= 0:
+            print()
