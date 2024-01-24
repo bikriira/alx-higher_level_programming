@@ -88,12 +88,6 @@ class Square:
         The output is horizontally and vertically offset by the first and
         second integers in the position attribute, respectively.
         """
-        if self.__size == 0:
-            print()
-        else:
-        if self.__size is 0:
-            print()
-        else:
         if self.__size is 0:
             print()
         else:
