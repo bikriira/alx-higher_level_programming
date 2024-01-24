@@ -81,14 +81,10 @@ class Square:
             TypeError: if value is not a tuple of two positive ints
 
         """
-        if type(value) is not tuple:
+        if (not isinstance(value, tuple)) or len(value) != 2:
             raise TypeError('position must be a tuple of 2 positive integers')
-        if len(value) is not 2:
+        if value[0] < 0 or value[1] < 0:
             raise TypeError('position must be a tuple of 2 positive integers')
-        for num in value:
-            if type(num) is not int or num < 0:
-                raise TypeError('position must be a tuple of ' +
-                                '2 positive integers')
         self.__position = value
 
     def area(self):
