@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-    2-square.py
-    Defines class Square
+"""Square generation module for Python project 0x06
 """
 
 
@@ -22,31 +20,48 @@ class Square:
 
     """
     def __init__(self, size=0, position=(0, 0)):
-        """
-            The constructor of Square,
-
-            Args:
-                size (int): size of the square
-                __position (tuple) ((int), (int)): horizontal offset in spaces,
-                vertical offset in newlines
-        """
-        self.__size = size
-        self.__position = position
+        # attribute assigment here engages setters defined below
+        self.size = size
+        self.position = position
 
     @property
     def size(self):
+        """__size getter, setter with same method name
+
+        Returns:
+            __size (int): length of one side, squared
+
+        """
         return self.__size
 
     @size.setter
     def size(self, value):
-        if not isinstance(value, int):
-            raise TypeError("size must be an integer")
+        """Args:
+            value (int): length of one side of square
+
+        Attributes:
+            __size (int): length of one side of square
+
+        Raises:
+            TypeError: if value is not an integer
+            ValueError: if value is less than 0
+
+        """
+        if type(value) is not int:
+            raise TypeError('size must be an integer')
         if value < 0:
-            raise ValueError("size must be >= 0")
-        self.__size = int(value)
+            raise ValueError('size must be >= 0')
+        self.__size = value
 
     @property
     def position(self):
+        """__position getter, setter with same method name
+
+        Returns:
+            __position (tuple) ((int), (int)): horizontal offset in spaces,
+            vertical offset in newlines
+
+        """
         return self.__position
 
     @position.setter
@@ -62,7 +77,7 @@ class Square:
             TypeError: if value is not a tuple of two positive ints
 
         """
-        if not isinstance(value, tuple):
+        if type(value) is not tuple:
             raise TypeError('position must be a tuple of 2 positive integers')
         if len(value) is not 2:
             raise TypeError('position must be a tuple of 2 positive integers')
@@ -82,7 +97,8 @@ class Square:
             area (int): length of one side, squared
 
         """
-        return self.__size ** 2
+        area = self.__size * self.__size
+        return area
 
     def my_print(self):
         """Prints text representation of square in hash chars,
@@ -106,3 +122,5 @@ class Square:
                 for col in range(0, self.__size):
                     print("#", end="")
                 print()
+
+#        print("size: {} position: {}".format(self.__size, self.__position))
