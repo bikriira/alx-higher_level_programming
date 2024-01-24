@@ -51,7 +51,18 @@ class Square:
 
     @position.setter
     def position(self, value):
-        if type(value) is not tuple:
+        """Args:
+            value (int): tuple of two positive integers
+
+        Attributes:
+            __position (tuple) ((int), (int)): horizontal offset in spaces,
+            vertical offset in newlines
+
+        Raises:
+            TypeError: if value is not a tuple of two positive ints
+
+        """
+        if not isinstance(value, tuple):
             raise TypeError('position must be a tuple of 2 positive integers')
         if len(value) is not 2:
             raise TypeError('position must be a tuple of 2 positive integers')
@@ -62,9 +73,28 @@ class Square:
         self.__position = value
 
     def area(self):
+        """Calulates area of square.
+
+        Attributes:
+            __size (int): length of one side of square
+
+        Returns:
+            area (int): length of one side, squared
+
+        """
         return self.__size ** 2
 
     def my_print(self):
+        """Prints text representation of square in hash chars,
+        horizontally and vertically offset by first and second int
+        in __position, respectively.
+
+        Attributes:
+            __size (int): length of one side of square
+            __position (tuple) ((int), (int)): horizontal offset in spaces,
+            vertical offset in newlines
+
+        """
         if self.__size == 0:
             print()
         else:
