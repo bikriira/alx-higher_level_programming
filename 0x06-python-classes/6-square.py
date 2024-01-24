@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+"""Hold the square class"""
+
+
 class Square:
     """Class representing a square.
 
@@ -5,6 +9,7 @@ class Square:
         size (int): Length of one side of the square.
         position (tuple): Horizontal and vertical offset of the square.
     """
+
     def __init__(self, size=0, position=(0, 0)):
         """Initialize a square.
 
