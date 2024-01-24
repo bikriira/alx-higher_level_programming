@@ -11,7 +11,8 @@ class Square:
 
         Attributes:
             size (int): size of the square
-            position=(0, 0):
+            position=(0, 0): __position (tuple) ((int), (int)): horizontal and
+            horizontal offsets in spaces(x, y)
     """
     def __init__(self, size=0, position=(0, 0)):
         """
@@ -19,7 +20,8 @@ class Square:
 
             Args:
                 size (int): size of the square
-                position=(0, 0):
+                __position (tuple) ((int), (int)): horizontal offset in spaces,
+                vertical offset in newlines
         """
         self.__size = size
         self.__position = position
@@ -42,11 +44,10 @@ class Square:
 
     @position.setter
     def position(self, value):
-        if not isinstance(value, tuple):
+        if not isinstance(value, tuple) or len(value) != 2:
             raise TypeError("position must be a tuple of 2 positive integers")
-        elif not (isinstance(x, int) and isinstance(y, int)):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        elif value[0] < 0 or value[1] < 0:
+        x, y = value
+        if not (isinstance(x, int) and isinstance(y, int)) or x < 0 or y < 0:
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
@@ -54,6 +55,7 @@ class Square:
         return self.__size ** 2
 
     def my_print(self):
+        print("\n" * self.__position[1], end="")
         for row in range(self.__size):
             print(" " * self.__position[0], end="")
             for col in range(self.__size):
