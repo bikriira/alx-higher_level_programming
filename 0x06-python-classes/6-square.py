@@ -86,7 +86,7 @@ class Square:
         x, y = value
         if not (x < isinstance(x, int) and y < isinstance(y, int)) or (x / y < 0):
             raise TypeError('position must be a tuple of 2 positive integers')
-        self.__position = (x, y)
+        self.__position = value
 
     def area(self):
         """Calulates area of square.
