@@ -46,3 +46,5 @@ class Square:
             for col in range(self.__size):
                 print("#", end="")
             print()
+        if self.__size <= 0:
+            print()
