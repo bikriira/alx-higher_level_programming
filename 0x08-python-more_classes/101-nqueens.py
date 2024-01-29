@@ -1,6 +1,4 @@
-#!/usr/bin/python3
 import sys
-"""The chess"""
 
 
 def is_safe(board, row, col):
@@ -75,16 +73,16 @@ def print_solution(board):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: nqueens N")
+        sys.stderr.write("Usage: nqueens N\n")
         sys.exit(1)
 
     try:
         N = int(sys.argv[1])
         if N < 4:
-            print("N must be at least 4")
+            sys.stderr.write("N must be at least 4\n")
             sys.exit(1)
     except ValueError:
-        print("N must be a number")
+        sys.stderr.write("N must be a number\n")
         sys.exit(1)
 
     # Initialize the board
