@@ -5,9 +5,16 @@
 class Square:
     """Class representing a square.
 
+    Args:
+        size (int): length of one side of square
+        position (tuple) ((int), (int)): horizontal offset in spaces,
+        vertical offset in newlines
+
+
     Attributes:
-        size (int): Length of one side of the square.
-        position (tuple): Horizontal and vertical offset of the square.
+        __size (int): length of one side of square
+        __position (tuple) ((int), (int)): horizontal offset in spaces,
+        vertical offset in newlines
     """
 
     def __init__(self, size=0, position=(0, 0)):
@@ -23,23 +30,26 @@ class Square:
 
     @property
     def size(self):
-        """Get the size of the square.
+        """__size getter, setter with same method name
 
         Returns:
-            int: The length of one side of the square.
+            __size (int): length of one side, squared
+
         """
         return self.__size
 
     @size.setter
     def size(self, value):
-        """Set the size of the square.
+        """Args:
+            value (int): length of one side of square
 
-        Args:
-            value (int): The length of one side of the square.
+        Attributes:
+            __size (int): length of one side of square
 
         Raises:
-            TypeError: If the value is not an integer.
-            ValueError: If the value is less than 0.
+            TypeError: if value is not an integer
+            ValueError: if value is less than 0
+
         """
         if not isinstance(value, int):
             raise TypeError('size must be an integer')
@@ -49,46 +59,61 @@ class Square:
 
     @property
     def position(self):
-        """Get the position of the square.
+        """__position getter, setter with same method name
 
         Returns:
-            tuple: The horizontal and vertical offset of the square.
+            __position (tuple) ((int), (int)): horizontal offset in spaces,
+            vertical offset in newlines
+
         """
         return self.__position
 
     @position.setter
     def position(self, value):
-        """Set the position of the square.
+        """Args:
+            value (int): tuple of two positive integers
 
-        Args:
-            value (tuple): A tuple of two positive integers representing
-                horizontal and vertical offset.
+        Attributes:
+            __position (tuple) ((int), (int)): horizontal offset in spaces,
+            vertical offset in newlines
 
         Raises:
-            TypeError: If the value is not a tuple of two positive integers.
+            TypeError: if value is not a tuple of two positive ints
+
         """
-        if not isinstance(value, tuple) or len(value) != 2:
+        if (not isinstance(value, tuple)) or len(value) != 2:
             raise TypeError('position must be a tuple of 2 positive integers')
         x, y = value
+        if not (isinstance(x, int) and isinstance(y, int)):
+            raise TypeError('position must be a tuple of 2 positive integers')
         if x < 0 or y < 0:
             raise TypeError('position must be a tuple of 2 positive integers')
         self.__position = (x, y)
 
     def area(self):
-        """Calculate the area of the square.
+        """Calulates area of square.
+
+        Attributes:
+            __size (int): length of one side of square
 
         Returns:
-            int: The area of the square.
+            area (int): length of one side, squared
+
         """
         return self.__size ** 2
 
     def my_print(self):
-        """Print a text representation of the square with '#' characters.
+        """Prints text representation of square in hash chars,
+        horizontally and vertically offset by first and second int
+        in __position, respectively.
 
-        The output is horizontally and vertically offset by the first and
-        second integers in the position attribute, respectively.
+        Attributes:
+            __size (int): length of one side of square
+            __position (tuple) ((int), (int)): horizontal offset in spaces,
+            vertical offset in newlines
+
         """
-        if self.__size == 0:
+        if self.__size is 0:
             print()
         else:
             for v_offset in range(0, self.__position[1]):
