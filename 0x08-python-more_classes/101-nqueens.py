@@ -74,16 +74,16 @@ def print_solution(board):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        sys.stderr.write("Usage: nqueens N\n")
+        print("Usage: nqueens N\n")
         sys.exit(1)
 
     try:
         N = int(sys.argv[1])
         if N < 4:
-            sys.stderr.write("N must be at least 4\n")
+            print("N must be at least 4\n")
             sys.exit(1)
     except ValueError:
-        sys.stderr.write("N must be a number\n")
+        print("N must be a number\n")
         sys.exit(1)
 
     # Initialize the board
