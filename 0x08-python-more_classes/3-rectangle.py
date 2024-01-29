@@ -87,7 +87,7 @@ class Rectangle:
 
     def __str__(self):
         """ Print the rectangle with the character #
-        
+
             If width or height is equal to 0, return an empty string.
 
             Examples:
