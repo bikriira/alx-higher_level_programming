@@ -37,11 +37,9 @@ class Student:
         if attrs is None:
             return obj_dict
 
-        i = -1
-        while i != ((len(attrs) * -1) - 1):
+        for i in range(len(attrs)):
             value = obj_dict.get(attrs[i])
             if value:
                 new_dict[attrs[i]] = value
-            i -= 1
 
         return new_dict
