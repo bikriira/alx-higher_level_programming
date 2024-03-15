@@ -14,4 +14,4 @@ SELECT * FROM cities
 	    FROM states
 		WHERE name = 'California'
 	)
-	ORDER BY city.id;
+	ORDER BY id ASC;
