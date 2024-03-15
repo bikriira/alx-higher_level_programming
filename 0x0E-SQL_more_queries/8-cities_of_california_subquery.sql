@@ -8,10 +8,10 @@
 -- The database name will be passed as an argument of the mysql command
 
 
-SELECT * FROM cities
+SELECT id, name FROM cities
 	WHERE id = (
 		SELECT id
 	    FROM states
 		WHERE name = 'California'
 	)
-	ORDER BY id ASC;
+	ORDER BY id;
