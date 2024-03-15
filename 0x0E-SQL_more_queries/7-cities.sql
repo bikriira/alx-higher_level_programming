@@ -14,5 +14,5 @@ CREATE TABLE IF NOT EXISTS cities(
 	name VARCHAR(256) NOT NULL,
 
 	CONSTRAINT pk_id PRIMARY KEY(id),
-	CONSTRAINT fk_state_id FOREIGN KEY(state_id) REFERENCES(states.id)
+	CONSTRAINT fk_state_id FOREIGN KEY(state_id) REFERENCES states(id)
 );
