@@ -40,6 +40,7 @@ rows = cur.fetchall()
 for row in rows:
         print(f"ID {row[0]}: {row[1]},")
 
-
+# For the execution to take real efect in the actual DB use "db.commit()",
+# otherwise the changes are limited to the script ecxecution life time
 cur.close()
 db.close()
