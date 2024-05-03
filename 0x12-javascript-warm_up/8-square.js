@@ -7,7 +7,7 @@ if (rounds !== undefined) {
   for (let index = 0; index < rounds; index++) {
     let row = '';
     for (let j = 0; j < rounds; j++) {
-      row += 'x';
+      row += 'X';
     }
     console.log(row);
   }
