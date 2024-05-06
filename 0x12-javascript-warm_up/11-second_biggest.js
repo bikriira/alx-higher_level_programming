@@ -1,17 +1,13 @@
 #!/usr/bin/node
 
-const args = require('process').argv;
+let args = require('process').argv;
 
-let biggestNum = 0;
-let secBiggestNUm = 0;
-if (args.length >= 4) {
-  for (let i = 2; i < args.length; i++) {
-    if (args[i] >= biggestNum) {
-      secBiggestNUm = biggestNum;
-      biggestNum = args[i];
-    }
-  }
-  console.log(secBiggestNUm);
+if (args.length > 3) {
+  args = args.slice(2);
+  console.log(args);
+  args.sort();
+  console.log(args);
+  console.log(args[args.length - 2]);
 } else {
   console.log('0');
 }
