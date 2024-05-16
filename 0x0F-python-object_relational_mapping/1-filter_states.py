@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This script retrieves and prints all states 
+This script retrieves and prints all states
     with a name starting with N (upper N) from a MySQL database.
 """
 import MySQLdb
@@ -9,14 +9,14 @@ import sys
 
 def selector():
     """
-    Lists all states with a name starting with N (upper N) 
+    Lists all states with a name starting with N (upper N)
         from the database passed through the command line.
 
     The database credentials (username, password, and database name)
     should be passed as command line arguments (in that order):
 
     Example usage:
-        ./0-select_states.py root "" hbtn_0e_0_usa
+        ./1-filter_states.py root "" hbtn_0e_0_usa
 
     Raises:
         MySQLdb.Error: An error occurred while interacting with the database.
