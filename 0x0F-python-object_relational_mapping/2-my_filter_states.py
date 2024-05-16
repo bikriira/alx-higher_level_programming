@@ -32,10 +32,10 @@ def selector():
         cursor = conn.cursor()
 
         # Execute the query to fetch all states ordered by id
-        cursor.execute(f"""SELECT *
+        cursor.execute("""SELECT *
                           FROM states
-                          WHERE name = '{sys.argv[4]}'
-                          ORDER BY id ASC""")
+                          WHERE name = '{}'
+                          ORDER BY id ASC""".format(sys.argv[4]))
         results = cursor.fetchall()
 
         # Print each row in the results
