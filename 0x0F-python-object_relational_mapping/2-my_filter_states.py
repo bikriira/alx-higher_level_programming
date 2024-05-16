@@ -34,7 +34,7 @@ def selector():
         # Execute the query to fetch all states ordered by id
         cursor.execute("""SELECT *
                           FROM states
-                          WHERE name = '{}'
+                          WHERE BINARY name = '{}'
                           ORDER BY id ASC""".format(sys.argv[4]))
         results = cursor.fetchall()
 
