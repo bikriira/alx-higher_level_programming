@@ -25,4 +25,5 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)  # create Session class
     session = Session()  # createsession object
     result = session.query(State).first()
-    print(f"{result.id}: {result.name}")
+    if result:
+        print(f"{result.id}: {result.name}")
