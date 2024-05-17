@@ -27,7 +27,7 @@ if __name__ == "__main__":
     session = Session()  # createsession object
     results = session.query(State).filter(State.name == sys.argv[4])
 
-    if results.count() == '1':
+    if results.count() != 0:
         for row in results:
             print(row.id)
     else:
