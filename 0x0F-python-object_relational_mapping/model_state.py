@@ -3,8 +3,7 @@
 Script to define a SQLAlchemy model representing the 'states' table.
 """
 
-import sys
-from sqlalchemy import create_engine, Column, Integer, VARCHAR
+from sqlalchemy import Column, Integer, VARCHAR
 from sqlalchemy.orm import declarative_base
 
 # Uncomment and adjust engine creation if needed
