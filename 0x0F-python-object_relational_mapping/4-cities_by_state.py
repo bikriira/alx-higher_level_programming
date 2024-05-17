@@ -1,22 +1,21 @@
 #!/usr/bin/python3
 """
-This script retrieves and prints all states
+This script retrieves and prints all cities with their coresponding states
     where name = value passes through command line.
-    BUT AVOID SQLInjection
 
 The database credentials (username, password, and database name)
 should be passed as command line arguments (in that order):
+
 Example usage:
-    3-my_safe_filter_states.py root "" hbtn_0e_0_usa
+    4-cities_by_state.py root "" hbtn_0e_0_usa
 """
 import MySQLdb
 import sys
 
 
-def selector():
+def main():
     """
-    Lists all states where name = value passes through command line.
-        BUT AVOID SQLInjection
+    Lists all cities with their coresponding states(Uses Joins).
 
     Raises:
         MySQLdb.Error: An error occurred while interacting with the database.
@@ -33,10 +32,13 @@ def selector():
         cursor = conn.cursor()
 
         # Execute the query to fetch all states ordered by id
-        cursor.execute("""SELECT *
-                          FROM states
-                          WHERE BINARY name = %s
-                          ORDER BY id ASC""", (sys.argv[4],))
+        cursor.execute("""
+                            SELECT cities.id, cities.name, states.name
+                            FROM cities
+                            INNER JOIN states
+                                WHERE cities.state_id = states.id
+                            ORDER BY states.id ASC
+                       """)
         results = cursor.fetchall()
 
         # Print each row in the results
@@ -55,4 +57,4 @@ def selector():
 
 
 if __name__ == "__main__":
-    selector()
+    main()
