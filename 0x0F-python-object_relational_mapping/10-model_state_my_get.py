@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Script that lists all State objects that contain the letter a from
+Script that prints the State object with the name passed as argument from
     the database using SQLAlchemy
 """
 if __name__ == "__main__":
@@ -25,7 +25,10 @@ if __name__ == "__main__":
     Base.metadata.create_all(bind=engine)  # create db&tables if not present
     Session = sessionmaker(bind=engine)  # create Session class
     session = Session()  # createsession object
-    results = session.query(State).filter(State.name.like("%a%"))
+    results = session.query(State).filter(State.name == sys.argv[4])
 
-    for row in results:
-        print(f"{row.id}: {row.name}")
+    if results.count() == '1':
+        for row in results:
+            print(row.id)
+    else:
+        print("Not found")
