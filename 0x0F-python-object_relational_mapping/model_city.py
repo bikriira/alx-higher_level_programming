@@ -1,9 +1,10 @@
+#!/usr/bin/python3
 """
 contains the class definition of a City
 """
-
 from sqlalchemy import Column, VARCHAR, ForeignKey, INT
 from model_state import Base
+
 
 class City(Base):
     __tablename__ = "cities"
