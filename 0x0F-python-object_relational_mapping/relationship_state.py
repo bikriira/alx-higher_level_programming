@@ -20,6 +20,7 @@ class State(Base):
     Attributes:
         id (int): Primary key for the state.
         name (str): Name of the state.
+        cities (relationship): One-to-many relationship with City objects.
     """
     __tablename__ = "states"
     id = Column(Integer, autoincrement=True, primary_key=True)
