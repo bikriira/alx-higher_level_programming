@@ -7,6 +7,14 @@ from model_state import Base
 
 
 class City(Base):
+    """
+    SQLAlchemy model representing the 'cities' table.
+
+    Attributes:
+        id (int): Primary key for the city.
+        name (str): Name of the city.
+        state_id: rrelate to states_id
+    """
     __tablename__ = "cities"
     id = Column(autoincrement=True, primary_key=True)
     name = Column(VARCHAR(128), nullable=False)
