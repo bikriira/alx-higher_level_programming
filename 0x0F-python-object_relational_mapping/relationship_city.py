@@ -3,7 +3,7 @@
 contains the class definition of a City
 """
 from sqlalchemy import Column, VARCHAR, ForeignKey, INT
-from model_state import Base
+from relationship_state import Base
 
 
 class City(Base):
@@ -16,7 +16,7 @@ class City(Base):
         state_id: rrelate to states_id
     """
     __tablename__ = "cities"
-    id = Column(autoincrement=True, primary_key=True)
+    id = Column(INT, autoincrement=True, primary_key=True)
     name = Column(VARCHAR(128), nullable=False)
     state_id = Column(INT, ForeignKey("states.id"))
 

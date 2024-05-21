@@ -4,11 +4,8 @@ Script to define a SQLAlchemy model representing the 'states' table.
 """
 
 from sqlalchemy import Column, Integer, VARCHAR
-from sqlalchemy.orm import declarative_base, relationship
-
-# Uncomment and adjust engine creation if needed
-# engine = create_engine(
-# f"mysql+mysqldb://{sys.argv[1]}:{sys.argv2}@localhost:3306/{sys.argv[3]}")
+from sqlalchemy.orm import relationship
+from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 
