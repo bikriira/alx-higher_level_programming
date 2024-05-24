@@ -1,3 +1,5 @@
+#!/usr/bin/node
+
 const fs = require('fs').promises;
 const fileName = require('process').argv[2];
 
