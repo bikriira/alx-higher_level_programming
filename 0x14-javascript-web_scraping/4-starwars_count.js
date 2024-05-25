@@ -1,19 +1,14 @@
 #!/usr/bin/node
 
-const promisify = require('util').promisify;
-const request = promisify(require('request'));
+const request = require('request');
 
-(async () => {
-  try {
-    const response = await request(process.argv[2]);
+request(process.argv[2], (error, response, body) => {
+  if (!error) {
     const movies = JSON.parse(response.body).results;
-
     const occurrence = movies.reduce((count, movie) => {
       return count + (movie.characters.includes('https://swapi-api.alx-tools.com/api/people/18/') ? 1 : 0);
     }, 0);
 
     console.log(occurrence);
-  } catch (error) {
-    console.error(error);
   }
-})();
+});
