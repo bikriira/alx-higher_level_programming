@@ -19,3 +19,7 @@ __pycache__
 # Test file
 test.js
 6-model_state.py  
+
+
+# auto_exec_js.sh
+nohup.out
