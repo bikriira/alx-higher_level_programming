@@ -14,6 +14,6 @@ const request = promisify(require('request'));
 
     console.log(occurrence);
   } catch (error) {
-    console.error('Error:', error.message);
+    console.error(error);
   }
 })();
